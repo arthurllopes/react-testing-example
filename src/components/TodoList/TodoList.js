@@ -17,6 +17,10 @@ function TodoList({
         });
         setTodos(updatedTasks)
     }
+    function handleDeleteTask (ID) {
+        const newTasks = todos.filter((todo) => todo.id !== ID)
+        setTodos(newTasks)
+    }
 
     const calcNumberOfIncompletedTasks = () => {
         let count = 0;
@@ -32,11 +36,13 @@ function TodoList({
                 <div>
                     {
                         todos.map((todo, index) => (
-                            <div 
-                                className={`todo-item ${todo.completed && "todo-item-active"}`} 
-                                onClick={() => updateTask(todo.id)}
-                            >
-                                {todo.task}
+                            <div key={index} data-testid='task-container' className='todo-item'>
+                                <div className={todo.completed ? "todo-item-active" : ''} onClick={() => updateTask(todo.id)}>
+                                    {todo.task}
+                                </div>
+                                <div>
+                                    <button onClick={() => handleDeleteTask(todo.id)}>X</button>
+                                </div>
                             </div>
                         ))
                     }

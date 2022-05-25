@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Switch>
-        <Route strict exact path="/" component={TodoPage}/>
-        <Route strict exact path="/followers" component={FollowersPage}/>
-      </Switch>
+        <Switch>
+          <Route strict exact path="/" component={TodoPage}/>
+          <Route strict exact path="/followers" component={FollowersPage}/>
+        </Switch>
     </div>
   );
 }
